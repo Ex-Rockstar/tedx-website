@@ -1,5 +1,6 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
+import AboutTed from "./AboutTed.jsx";
 
 const images = [
   "/hero1.jpg",
@@ -55,7 +56,9 @@ export default function Home() {
 
   return (
     <>
-      {/* ================= HERO ================= */}
+      {/* ======================================================
+          HERO SECTION
+      ======================================================= */}
       <section
         ref={heroRef}
         className="relative min-h-screen overflow-hidden"
@@ -117,7 +120,9 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ================= STAGE SECTION ================= */}
+      {/* ======================================================
+          STAGE / KINETIC SECTION
+      ======================================================= */}
       <section
         ref={stageRef}
         className="relative h-screen min-h-[100svh] overflow-hidden bg-black"
@@ -145,10 +150,7 @@ export default function Home() {
 
         {/* overlays */}
         <motion.div
-          variants={{
-            hidden: { opacity: 1 },
-            visible: { opacity: 0 },
-          }}
+          variants={{ hidden: { opacity: 1 }, visible: { opacity: 0 } }}
           initial="hidden"
           animate={bgControls}
           transition={{ duration: 1.5 }}
@@ -156,10 +158,7 @@ export default function Home() {
         />
 
         <motion.div
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 0.55 },
-          }}
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 0.55 } }}
           initial="hidden"
           animate={bgControls}
           transition={{ delay: 1.1, duration: 1 }}
@@ -167,10 +166,7 @@ export default function Home() {
         />
 
         <motion.div
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1 },
-          }}
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
           initial="hidden"
           animate={bgControls}
           transition={{ delay: 1.2, duration: 1 }}
@@ -179,7 +175,6 @@ export default function Home() {
 
         {/* TEXT */}
         <div className="relative z-10 h-full flex flex-col justify-center items-center gap-2 text-center px-6">
-
           {kineticWords.map((item, i) => (
             <motion.h2
               key={item.text}
@@ -203,7 +198,7 @@ export default function Home() {
                 text-[clamp(1.6rem,4.5vw,3.1rem)]
                 font-black
                 leading-[1]
-                tracking-tight
+                tracking-widest
                 ${item.color}
               `}
             >
@@ -228,6 +223,11 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* ======================================================
+          ABOUT TEDx SECTION
+      ======================================================= */}
+      <AboutTed />
     </>
   );
 }
