@@ -4,6 +4,7 @@ import AboutTed from "./AboutTed.jsx";
 import AboutTedSsec from "../components/AboutTedSsec.jsx";
 import AboutSairam from "../components/AboutSairam.jsx";
 import ExperienceSignalRoom from "../components/ExperienceSignalRoom.jsx";
+import CountdownSignal from "../components/CountdownSignal.jsx";
 
 const images = [
   "/hero1.jpg",
@@ -234,6 +235,7 @@ export default function Home() {
       <AboutTedSsec />
       <AboutSairam />
       <ExperienceSignalRoom />
+      <CountdownSignal />
     </>
   );
 }
