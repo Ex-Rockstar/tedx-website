@@ -1,4 +1,21 @@
+import { motion, useAnimationControls } from "framer-motion";
+import { useEffect } from "react";
+
 export default function Speakers() {
+  const titleControls = useAnimationControls();
+  const captionControls = useAnimationControls();
+  const imageControls = useAnimationControls();
+
+  useEffect(() => {
+    async function sequence() {
+      await titleControls.start("visible");
+      await captionControls.start("visible");
+      await imageControls.start("visible");
+    }
+
+    sequence();
+  }, []);
+
   return (
     <main className="w-full">
       <section
@@ -10,23 +27,38 @@ export default function Speakers() {
           items-center
           justify-center
           bg-white
-
           h-[50svh]
           lg:h-[100svh]
         "
       >
-        {/* TEXT CONTENT */}
+        {/* TEXT */}
         <div
           className="
             relative z-20
-            flex flex-col items-center text-center
+            flex flex-col
+            items-center
+            text-center
 
-            translate-y-6
-            lg:-translate-y-20
+            -translate-y-10
+            lg:-translate-y-14
           "
         >
           {/* CAPTION */}
-          <p
+          <motion.p
+            initial="hidden"
+            animate={captionControls}
+            variants={{
+              hidden: {
+                clipPath: "inset(0 100% 0 0)",
+              },
+              visible: {
+                clipPath: "inset(0 0% 0 0)",
+                transition: {
+                  duration: 2.4,
+                  ease: "easeInOut",
+                },
+              },
+            }}
             className="
               text-xs
               sm:text-sm
@@ -34,52 +66,86 @@ export default function Speakers() {
               tracking-[0.45em]
               uppercase
               text-black/70
-              mt-2
+              mb-3
+              overflow-hidden
+              whitespace-nowrap
             "
           >
             Meet the minds behind the ideas.
-          </p>
+          </motion.p>
 
-          {/* HERO WORD */}
-          <h1
+          {/* TITLE */}
+          <motion.h1
+            initial="hidden"
+            animate={titleControls}
+            variants={{
+              hidden: {
+                clipPath: "inset(0 100% 0 0)",
+              },
+              visible: {
+                clipPath: "inset(0 0% 0 0)",
+                transition: {
+                  duration: 3.0,
+                  ease: "easeInOut",
+                },
+              },
+            }}
             className="
               font-anton
               text-red-600
               leading-none
-
               text-[clamp(5.8rem,18vw,22rem)]
+              overflow-hidden
             "
           >
             INNOVATORS
-          </h1>
+          </motion.h1>
         </div>
 
-        {/* GUEST IMAGE */}
-        <img
-          src="/speakers.svg"
-          alt="Guest silhouettes"
+        {/* IMAGE */}
+        <motion.div
+          initial={{ y: 220, opacity: 0 }}
+          animate={imageControls}
+          variants={{
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                duration: 2.4,
+                ease: "easeInOut",
+              },
+            },
+          }}
           className="
-            pointer-events-none
             absolute
             bottom-0
-            left-1/2
-            -translate-x-1/2
-            select-none
+            left-0
+            w-full
+            flex
+            justify-center
             z-30
-            brightness-75
-            contrast-125
-            sharpness-150
-            w-[96%]
-            sm:w-[92%]
-            md:w-[87%]
-
-            lg:w-[82%]
-            xl:w-[78%]
-            2xl:w-[75%]
-
-            max-w-[1800px]
           "
-        />
+        >
+          <img
+            src="/innovators.svg"
+            alt="Guest silhouettes"
+            className="
+              pointer-events-none
+              select-none
+              brightness-75
+              contrast-125
+
+              w-[96%]
+              sm:w-[92%]
+              md:w-[87%]
+              lg:w-[82%]
+              xl:w-[78%]
+              2xl:w-[75%]
+
+              max-w-[1800px]
+            "
+          />
+        </motion.div>
       </section>
     </main>
   );
