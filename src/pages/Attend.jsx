@@ -8,6 +8,7 @@ export default function Attend() {
 
   const [form, setForm] = useState({
     name: "",
+    email: "",
     dept: "",
     studentId: "",
     ticketType: "",
@@ -111,9 +112,9 @@ export default function Attend() {
               <h2 className="text-2xl font-bold mb-6 text-center">Select Your Access</h2>
 
               {[
-                { id: "A", label: "DIAMOND PASS", desc: "Front row seating + Merch kit", color: "border-red-600 hover:bg-red-600/10" },
-                { id: "B", label: "GOLD PASS", desc: "Standard seating + Lunch", color: "border-white/30 hover:border-white hover:bg-white/5" },
-                { id: "C", label: "SILVER PASS", desc: "General access", color: "border-white/10 hover:border-white/50 text-white/70" }
+                { id: "A", label: "DIAMOND PASS", desc: "Exclusively for 150 members only", color: "border-red-600 hover:bg-red-600/10" },
+                { id: "B", label: "GOLD PASS", desc: "Standard seating", color: "border-white/30 hover:border-white hover:bg-white/5" },
+                { id: "C", label: "SILVER PASS", desc: "Balcony seating", color: "border-white/10 hover:border-white/50 text-white/70" }
               ].map((ticket) => (
                 <button
                   key={ticket.id}
@@ -147,6 +148,12 @@ export default function Attend() {
                   className="w-full bg-black/50 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-red-600 transition-colors placeholder:text-neutral-600"
                   name="name"
                   placeholder="Full Name"
+                  onChange={update}
+                />
+                <input
+                  className="w-full bg-black/50 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-red-600 transition-colors placeholder:text-neutral-600"
+                  name="email"
+                  placeholder="Email ID"
                   onChange={update}
                 />
                 <input
