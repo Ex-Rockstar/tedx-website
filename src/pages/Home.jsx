@@ -1,4 +1,4 @@
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 import AboutTed from "./AboutTed.jsx";
 import AboutTedSsec from "../components/AboutTedSsec.jsx";
@@ -37,6 +37,10 @@ export default function Home() {
   const bgControls = useAnimation();
   const textControls = useAnimation();
 
+  const { scrollY } = useScroll();
+  const yBG = useTransform(scrollY, [0, 1000], [0, 300]);
+  const yText = useTransform(scrollY, [0, 500], [0, 100]);
+
   /* HERO ANIMATION */
   useEffect(() => {
     if (heroInView) {
@@ -69,16 +73,19 @@ export default function Home() {
       >
         {/* Background strips */}
         <div className="absolute inset-0 grid grid-cols-5">
-          {images.map((img, i) => (
-            <motion.div
-              key={i}
-              initial={{ y: "100vh" }}
-              animate={{ y: 0 }}
-              transition={{ delay: i * 0.15, duration: 1 }}
-              className="bg-cover bg-center scale-[1.08] grayscale contrast-110 brightness-90"
-              style={{ backgroundImage: `url(${img})` }}
-            />
-          ))}
+          {images.map((img, i) => {
+            const yParallax = useTransform(scrollY, [0, 1000], [0, (i % 2 === 0 ? 150 : -150)]);
+            return (
+              <motion.div
+                key={i}
+                initial={{ y: "100vh" }}
+                animate={{ y: 0 }}
+                style={{ backgroundImage: `url(${img})`, y: yParallax }}
+                transition={{ delay: i * 0.15, duration: 1 }}
+                className="bg-cover bg-center scale-[1.08] grayscale contrast-110 brightness-90"
+              />
+            );
+          })}
         </div>
 
         {/* overlays */}
@@ -98,7 +105,8 @@ export default function Home() {
           }}
           initial="hidden"
           animate={heroControls}
-          className="relative z-10 max-w-7xl mx-auto px-16 pt-48"
+          style={{ y: yText }}
+          className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 pt-32 md:pt-48"
         >
           <h1 className="text-[clamp(2.6rem,6vw,5.2rem)] font-extrabold leading-[0.95]">
             Not one passion.
@@ -112,12 +120,12 @@ export default function Home() {
             Different worlds. One stage.
           </p>
 
-          <div className="mt-12 flex gap-8">
-            <button className="px-10 py-3 bg-red-600 text-sm tracking-widest hover:bg-red-700 transition">
+          <div className="mt-12 flex flex-row flex-wrap gap-4">
+            <button className="px-6 py-3 md:px-10 md:py-4 bg-red-600 text-xs md:text-sm tracking-widest font-bold hover:bg-red-700 transition rounded shadow-[0_0_20px_rgba(220,38,38,0.5)]">
               ENTER EXPERIENCE
             </button>
 
-            <button className="px-10 py-3 border border-white/30 text-sm tracking-widest hover:bg-white/10 transition">
+            <button className="px-6 py-3 md:px-10 md:py-4 border border-white/30 text-xs md:text-sm tracking-widest font-bold hover:bg-white/10 transition rounded hover:border-white">
               VIEW SPEAKERS
             </button>
           </div>
@@ -185,7 +193,8 @@ export default function Home() {
               variants={{
                 hidden: {
                   opacity: 0,
-                  x: i % 2 === 0 ? -220 : 220,
+                  opacity: 0,
+                  x: i % 2 === 0 ? -100 : 100, // Reduced from 220 for mobile safety, assuming md: variant if needed, but keeping it simple for now to avoid overflow
                 },
                 visible: {
                   opacity: 1,

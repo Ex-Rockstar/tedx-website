@@ -1,10 +1,14 @@
 import React, { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, useScroll, useTransform } from "framer-motion";
 
 export default function AboutTedSsec() {
   const ref = useRef(null);
   const inView = useInView(ref, { amount: 0.45 });
   const controls = useAnimation();
+
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const yLeft = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const yRight = useTransform(scrollYProgress, [0, 1], [200, -200]);
 
   useEffect(() => {
     inView ? controls.start("visible") : controls.start("hidden");
@@ -68,6 +72,7 @@ export default function AboutTedSsec() {
               transition: { duration: 0.9, ease: "easeOut" },
             },
           }}
+          style={{ y: yLeft }}
         >
           <p className="text-[10px] tracking-[0.45em] text-white/55">
             ABOUT TEDx AT SAIRAM
@@ -95,7 +100,7 @@ export default function AboutTedSsec() {
         </motion.div>
 
         {/* ================= RIGHT GLASS CARDS ================= */}
-        <div className="relative flex flex-col gap-6">
+        <motion.div style={{ y: yRight }} className="relative flex flex-col gap-6">
           {[
             {
               tag: "SPEAKERS",
@@ -175,7 +180,7 @@ export default function AboutTedSsec() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, useScroll, useTransform } from "framer-motion";
 
 import VerifiedIcon from "@mui/icons-material/Verified";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
@@ -11,6 +11,9 @@ export default function AboutSairam() {
   const ref = useRef(null);
   const inView = useInView(ref, { amount: 0.35 });
   const controls = useAnimation();
+
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   useEffect(() => {
     inView ? controls.start("visible") : controls.start("hidden");
@@ -70,9 +73,9 @@ export default function AboutSairam() {
       className="relative min-h-[100svh] w-full overflow-hidden text-white py-20 sm:py-28"
     >
       {/* ================= BACKGROUND IMAGE ================= */}
-      <div
-        className="absolute inset-0 bg-cover bg-center scale-[1.06]"
-        style={{ backgroundImage: "url(/sairam_main.jpg)" }}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center scale-[1.1]"
+        style={{ backgroundImage: "url(/sairam_main.jpg)", y: yBg }}
       />
 
       {/* DARK CINEMATIC OVERLAY */}

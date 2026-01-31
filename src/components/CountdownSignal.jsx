@@ -31,6 +31,7 @@ function Tile({ children, className = "" }) {
         bg-white/[0.04] backdrop-blur-xl
         shadow-[0_18px_45px_rgba(0,0,0,0.55)]
         overflow-hidden
+        flex flex-col
         ${className}
       `}
     >
@@ -107,12 +108,13 @@ export default function CountdownSignal() {
         }}
         className="
           w-full max-w-7xl mx-auto px-6
-          grid grid-cols-12 grid-rows-[auto_auto_auto]
+          grid grid-cols-1 md:grid-cols-12 auto-rows-auto
           gap-3
+          py-20 md:py-0
         "
       >
         {/* MIC CONTROL */}
-        <Tile className="col-span-3 p-4">
+        <Tile className="md:col-span-3 p-4">
           <p className="text-[10px] tracking-[0.45em] text-white/55 mb-3">
             MIC CONTROL
           </p>
@@ -138,7 +140,7 @@ export default function CountdownSignal() {
         </Tile>
 
         {/* COUNTDOWN CORE */}
-        <Tile className="col-span-6 row-span-2 flex flex-col items-center justify-center p-4">
+        <Tile className="md:col-span-6 md:row-span-2 flex flex-col items-center justify-center p-4">
           <p className="text-[10px] tracking-[0.45em] text-white/55">
             TIME TO TEDx
           </p>
@@ -157,7 +159,7 @@ export default function CountdownSignal() {
         </Tile>
 
         {/* STAGE STATUS */}
-        <Tile className="col-span-3 p-4">
+        <Tile className="md:col-span-3 p-4">
           <p className="text-[10px] tracking-[0.45em] text-white/55 mb-3">
             STAGE STATUS
           </p>
@@ -179,7 +181,7 @@ export default function CountdownSignal() {
         </Tile>
 
         {/* QUOTE */}
-        <Tile className="col-span-3 p-4">
+        <Tile className="md:col-span-3 p-4">
           <p className="text-[10px] tracking-[0.45em] text-white/55 mb-2">
             THE INVITATION
           </p>
@@ -198,7 +200,7 @@ export default function CountdownSignal() {
         </Tile>
 
         {/* MAP */}
-        <Tile className="col-span-3">
+        <Tile className="md:col-span-3 h-48 md:h-auto">
           <iframe
             title="map"
             className="w-full h-full grayscale brightness-75"
@@ -207,7 +209,7 @@ export default function CountdownSignal() {
         </Tile>
 
         {/* LIVE CONSOLE */}
-        <Tile className="col-span-6 p-4">
+        <Tile className="md:col-span-6 p-4">
           <p className="text-[10px] tracking-[0.45em] text-white/55 mb-2">
             LIVE CONSOLE
           </p>
@@ -225,7 +227,7 @@ export default function CountdownSignal() {
         </Tile>
 
         {/* META STRIP */}
-        <Tile className="col-span-6 px-5 py-3 flex items-center justify-between text-[10px] tracking-[0.45em] text-white/60">
+        <Tile className="md:col-span-6 px-5 py-3 flex items-center justify-between text-[10px] tracking-[0.45em] text-white/60">
           <span>LOCATION — SRI SAIRAM ENGINEERING COLLEGE</span>
           <span>FEB 14 · 2026 · TEDx SAIRAM</span>
         </Tile>
