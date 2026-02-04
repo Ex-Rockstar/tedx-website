@@ -318,9 +318,8 @@ export default function About() {
     ["Dheena Dhayalan R", "Designer", "dheena.svg"],
     ["Tharushi S S", "Creative Team", "tharushi.svg"],
     ["Pragati", "Creative Team", "pragati.svg"],
-
-    ["Tamilvani A S", "Hospitality Team", "tamilvani.svg"],
     ["Abirami S", "Hospitality Team", "abirami.svg"],
+    ["Tamilvani A S", "Hospitality Team", "tamilvani.svg"],
     ["Naveen M", "Hospitality Team", "naveen.svg"],
 
     ["Gowtham P N", "Logistics Team", "gowtham.svg"],
