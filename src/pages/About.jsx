@@ -1,6 +1,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
-import { Lightbulb, Mic2, School, Sparkles } from "lucide-react";
+import {
+  Lightbulb,
+  Mic2,
+  School,
+  Sparkles,
+  Users,
+} from "lucide-react";
 
 export default function About() {
   const ref = useRef(null);
@@ -17,7 +23,7 @@ export default function About() {
 
   return (
     <>
-      {/* HERO */}
+      {/* ================= HERO ================= */}
       <section
         ref={ref}
         className="relative w-full h-screen overflow-hidden text-white"
@@ -56,7 +62,7 @@ export default function About() {
           transition={{ duration: 1.8 }}
           className="relative z-20 w-full h-full flex items-center justify-center px-6"
         >
-          <div className="text-center max-w-3xl">
+          <div className="text-center max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -77,21 +83,25 @@ export default function About() {
               Intelligence Reimagined
             </motion.h1>
 
+            {/* Expanded hero content */}
             <motion.p
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              transition={{ delay: 1.2 }}
-              className="mt-6 text-gray-300 text-lg"
+              transition={{ delay: 1.2, duration: 1.6 }}
+              className="mt-8 text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed"
             >
-              Where imagination meets intelligence — shaping tomorrow.
+              Where imagination meets intelligence, and ideas are shaped into
+              powerful narratives. A space where thinkers challenge conventions,
+              perspectives collide, and conversations extend far beyond the
+              stage—igniting curiosity, reflection, and change.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: false }}
-              transition={{ delay: 1.6 }}
+              transition={{ delay: 1.8 }}
               className="mt-12 flex flex-col items-center"
             >
               <span className="text-[10px] tracking-widest text-gray-400">
@@ -107,7 +117,7 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* SECTION 2 */}
+      {/* ================= SECTION 2 ================= */}
       <section className="relative w-full h-screen text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src="/clg.png" alt="" className="w-full h-full object-cover" />
@@ -135,29 +145,44 @@ export default function About() {
               <p className="mt-6 text-gray-300 text-lg leading-relaxed">
                 TEDx Sri Sairam Engineering College is an independently organized
                 TEDx event that bridges academic excellence with transformative
-                ideas—bringing thinkers, innovators, and storytellers together
+                ideas, bringing thinkers, innovators, and storytellers together
                 to inspire meaningful change.
               </p>
             </motion.div>
 
             <div className="flex flex-col gap-4">
-              {[Lightbulb, Mic2, School].map((Icon, i) => (
+              {[
+                {
+                  icon: Lightbulb,
+                  title: "Curated Ideas",
+                  text: "Thought-provoking talks that challenge perspectives and assumptions.",
+                },
+                {
+                  icon: Mic2,
+                  title: "Diverse Voices",
+                  text: "Authentic stories and insights from multiple domains.",
+                },
+                {
+                  icon: School,
+                  title: "Academic Roots",
+                  text: "Grounded in the culture of Sri Sairam Engineering College.",
+                },
+              ].map((item, i) => (
                 <motion.div
-                  key={i}
+                  key={item.title}
                   initial={{ opacity: 0, x: 80 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false }}
                   transition={{ delay: i * 0.2, duration: 1 }}
                   className="rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 p-5"
                 >
-                  <Icon className="text-red-600 mb-2" size={24} />
-                  <p className="text-sm text-gray-300">
-                    {[
-                      "Curated ideas that challenge perspectives.",
-                      "Authentic voices from diverse domains.",
-                      "Rooted in Sri Sairam Engineering College.",
-                    ][i]}
-                  </p>
+                  <div className="flex items-center gap-3 mb-2">
+                    <item.icon className="text-red-600" size={22} />
+                    <h4 className="text-sm font-medium text-red-500">
+                      {item.title}
+                    </h4>
+                  </div>
+                  <p className="text-sm text-gray-300">{item.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -181,6 +206,79 @@ export default function About() {
               possibilities beyond conventional boundaries.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ================= SECTION 3 ================= */}
+      <section className="relative w-full min-h-screen bg-black text-white overflow-hidden flex items-center">
+        <div className="absolute inset-0">
+          <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-red-600/25 rounded-full blur-[180px]" />
+          <div className="absolute bottom-[-200px] right-1/4 w-[620px] h-[620px] bg-red-600/15 rounded-full blur-[220px]" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 1 }}
+            className="max-w-3xl mx-auto text-center mb-16"
+          >
+            <span className="text-xs tracking-[0.35em] text-red-500">
+              THE EVENT
+            </span>
+            <h2 className="mt-4 text-4xl sm:text-5xl font-semibold">
+              What’s in Store at <span className="text-red-600">TEDxSEC</span>
+            </h2>
+            <p className="mt-6 text-gray-300 text-lg">
+              A carefully crafted convergence of ideas, people, and experiences
+              designed to inspire thought and conversation.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Mic2,
+                title: "Talks & Performances",
+                text: "Powerful TED-style talks and creative performances delivered with clarity and intent.",
+                style:
+                  "bg-black/65 border border-red-500/25 text-red-500",
+              },
+              {
+                icon: Users,
+                title: "People & Perspectives",
+                text: "A diverse gathering of thinkers, creators, and innovators sharing the same space.",
+                style:
+                  "bg-red-600/65 border border-red-300/35 text-white",
+              },
+              {
+                icon: Sparkles,
+                title: "The Experience",
+                text: "An atmosphere designed for reflection, dialogue, and inspiration beyond the stage.",
+                style:
+                  "bg-white/65 border border-black/15 text-black",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: i * 0.2, duration: 1 }}
+                className={`rounded-2xl backdrop-blur-2xl p-8 text-center ${item.style}`}
+              >
+                <item.icon
+                  className="mx-auto mb-6"
+                  size={32}
+                />
+                <h3 className="text-xl font-medium">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed opacity-80">
+                  {item.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
     </>
