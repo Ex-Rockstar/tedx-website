@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Pricing from "../components/Pricing"; // ✅ ADD THIS
 
 export default function Attend() {
   const [step, setStep] = useState(1);
@@ -78,89 +79,35 @@ export default function Attend() {
 
   const variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
     exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6 bg-black text-white selection:bg-red-600 selection:text-white flex flex-col items-center">
-      {/* Background Ambience */}
+    <div className="min-h-screen pt-32 pb-20 px-6 bg-black text-white flex flex-col items-center">
+      {/* Background ambience */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-red-900/10 to-transparent" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-red-600/5 blur-[120px] rounded-full" />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 text-center mb-12"
-      >
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-2">
-          <span className="text-red-600">TEDx</span> Sairam
-        </h1>
-        <p className="text-white/60 tracking-[0.2em] text-sm md:text-base uppercase">
-          Reserve Your Experience
-        </p>
-      </motion.div>
+      {/* HEADER */}
 
-      <div className="relative z-10 w-full max-w-lg">
+
+      {/* 🔥 PRICING SECTION */}
+      {step === 1 && (
+        <Pricing
+          onSelect={(planId) => {
+            setForm({ ...form, ticketType: planId });
+            setStep(2);
+          }}
+        />
+      )}
+
+      {/* FORM FLOW */}
+      <div className="relative z-10 w-full max-w-lg mt-12">
         <AnimatePresence mode="wait">
-          {/* STEP 1 */}
-          {step === 1 && (
-            <motion.div
-              key="step1"
-              variants={variants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="space-y-4"
-            >
-              <h2 className="text-2xl font-bold mb-6 text-center">
-                Select Your Access
-              </h2>
-
-              {[
-                {
-                  id: "A",
-                  label: "DIAMOND PASS",
-                  desc: "Exclusively for 150 members only",
-                  color: "border-red-600 hover:bg-red-600/10",
-                },
-                {
-                  id: "B",
-                  label: "GOLD PASS",
-                  desc: "Standard seating",
-                  color:
-                    "border-white/30 hover:border-white hover:bg-white/5",
-                },
-                {
-                  id: "C",
-                  label: "SILVER PASS",
-                  desc: "Balcony seating",
-                  color:
-                    "border-white/10 hover:border-white/50 text-white/70",
-                },
-              ].map((ticket) => (
-                <button
-                  key={ticket.id}
-                  onClick={() => {
-                    setForm({ ...form, ticketType: ticket.id });
-                    setStep(2);
-                  }}
-                  className={`group w-full p-6 border ${ticket.color} rounded-xl text-left transition-all duration-300 flex flex-col`}
-                >
-                  <span className="text-xl font-bold tracking-widest group-hover:text-white transition-colors">
-                    {ticket.label}
-                  </span>
-                  <span className="text-sm opacity-60 mt-1">
-                    {ticket.desc}
-                  </span>
-                </button>
-              ))}
-            </motion.div>
-          )}
-
-          {/* STEP 2 */}
+          {/* STEP 2 — DETAILS */}
           {step === 2 && (
             <motion.div
               key="step2"
@@ -214,7 +161,7 @@ export default function Attend() {
             </motion.div>
           )}
 
-          {/* STEP 3 */}
+          {/* STEP 3 — PAYMENT */}
           {step === 3 && (
             <motion.div
               key="step3"
@@ -258,7 +205,7 @@ export default function Attend() {
             </motion.div>
           )}
 
-          {/* STEP 4 */}
+          {/* STEP 4 — SUCCESS */}
           {step === 4 && (
             <motion.div
               key="step4"
