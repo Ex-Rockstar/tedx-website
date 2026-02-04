@@ -17,7 +17,6 @@ export default function Pricing({ onSelect }) {
       id: "B",
       title: "GOLD",
       price: "₹400",
-      popular: true,
       note: "Standard Seating",
       features: [
         "Event Access",
@@ -29,8 +28,11 @@ export default function Pricing({ onSelect }) {
     {
       id: "A",
       title: "DIAMOND",
+      originalPrice: "₹600",
       price: "₹500",
+      popular: true,
       note: "Premium Experience",
+      offer: "Early Bird Offer",
       features: [
         "Front Row Seating",
         "Exclusive Guest Interaction",
@@ -83,9 +85,24 @@ export default function Pricing({ onSelect }) {
               {plan.title}
             </h3>
 
-            <div className="text-4xl font-extrabold mb-1">
-              {plan.price}
-            </div>
+            {/* PRICE */}
+            {plan.originalPrice ? (
+              <div className="mb-2">
+                <div className="text-sm text-white/50 line-through">
+                  {plan.originalPrice}
+                </div>
+                <div className="text-4xl font-extrabold text-red-500">
+                  {plan.price}
+                </div>
+                <div className="text-xs text-red-400 tracking-widest mt-1">
+                  {plan.offer}
+                </div>
+              </div>
+            ) : (
+              <div className="text-4xl font-extrabold mb-1">
+                {plan.price}
+              </div>
+            )}
 
             <p className="text-white/60 text-sm mb-6">
               {plan.note}
@@ -102,9 +119,11 @@ export default function Pricing({ onSelect }) {
               className={`
                 mt-auto
                 py-3 rounded-lg font-bold tracking-widest text-sm
-                ${plan.popular
-                  ? "bg-red-600 hover:bg-red-700"
-                  : "border border-white/30 hover:bg-white/10"}
+                ${
+                  plan.popular
+                    ? "bg-red-600 hover:bg-red-700"
+                    : "border border-white/30 hover:bg-white/10"
+                }
               `}
             >
               SELECT PLAN
