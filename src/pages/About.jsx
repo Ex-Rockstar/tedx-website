@@ -23,99 +23,106 @@ export default function About() {
 
   return (
     <>
-      {/* ================= HERO ================= */}
-      <section
-        ref={ref}
-        className="relative w-full h-screen overflow-hidden text-white"
+{/* ================= HERO ================= */}
+<section
+  ref={ref}
+  className="relative w-full h-screen overflow-hidden text-white"
+>
+  <img
+    src="/aboutbg.jpg"
+    alt=""
+    className="hidden"
+    onLoad={() => setBgLoaded(true)}
+  />
+
+  {/* BACKGROUND */}
+  <motion.div
+    style={{ backgroundImage: "url('/aboutbg.jpg')", scale: bgScale }}
+    className="absolute inset-0 bg-cover bg-center"
+  />
+
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
+
+  {/* ROTATING RINGS — faster */}
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 55, ease: "linear" }}
+    className="absolute w-[80vw] max-w-[700px] h-[80vw] max-h-[700px] border border-red-500/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+  />
+
+  <motion.div
+    animate={{ rotate: -360 }}
+    transition={{ repeat: Infinity, duration: 85, ease: "linear" }}
+    className="absolute w-[60vw] max-w-[500px] h-[60vw] max-h-[500px] border border-red-500/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+  />
+
+  {/* TEXT CONTENT — moved DOWN slightly */}
+  <motion.div
+    style={{ y: textY, opacity: opacityFade }}
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false }}
+    transition={{ duration: 1.1, ease: "easeOut" }}
+    className="relative z-20 w-full h-full flex items-center justify-center px-6 translate-y-6"
+  >
+    <div className="text-center max-w-4xl">
+      {/* TAGLINE — faster */}
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="tracking-[0.25em] text-xs text-red-400 mb-5"
       >
-        <img
-          src="/aboutbg.jpg"
-          alt=""
-          className="hidden"
-          onLoad={() => setBgLoaded(true)}
-        />
+        ENTER THE FUTURE OF IDEAS
+      </motion.div>
 
+      {/* TITLE — faster blur-in */}
+      <motion.h1
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, filter: "blur(0px)" }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.4, duration: 1.0, ease: "easeOut" }}
+        className="text-4xl sm:text-6xl md:text-7xl uppercase tracking-[10px]"
+      >
+        Intelligence Reimagined
+      </motion.h1>
+
+      {/* DESCRIPTION — faster rise */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.7, duration: 0.9 }}
+        className="mt-8 text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed"
+      >
+        Where imagination meets intelligence, and ideas are shaped into
+        powerful narratives. A space where thinkers challenge conventions,
+        perspectives collide, and conversations extend far beyond the
+        stage—igniting curiosity, reflection, and change.
+      </motion.p>
+
+      {/* SCROLL INDICATOR — faster pulse */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ delay: 1.0, duration: 0.6 }}
+        className="mt-12 flex flex-col items-center"
+      >
+        <span className="text-[10px] tracking-widest text-gray-400">
+          SCROLL TO EXPLORE
+        </span>
         <motion.div
-          style={{ backgroundImage: "url('/aboutbg.jpg')", scale: bgScale }}
-          className="absolute inset-0 bg-cover bg-center"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+          className="mt-2 w-[2px] h-12 bg-gradient-to-b from-red-600 to-transparent"
         />
+      </motion.div>
+    </div>
+  </motion.div>
+</section>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
-
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 80, ease: "linear" }}
-          className="absolute w-[80vw] max-w-[700px] h-[80vw] max-h-[700px] border border-red-500/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
-          className="absolute w-[60vw] max-w-[500px] h-[60vw] max-h-[500px] border border-red-500/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-
-        <motion.div
-          style={{ y: textY, opacity: opacityFade }}
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 1.8 }}
-          className="relative z-20 w-full h-full flex items-center justify-center px-6"
-        >
-          <div className="text-center max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ delay: 0.4 }}
-              className="tracking-[0.25em] text-xs text-red-400 mb-5"
-            >
-              ENTER THE FUTURE OF IDEAS
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, filter: "blur(12px)" }}
-              whileInView={{ opacity: 1, filter: "blur(0px)" }}
-              viewport={{ once: false }}
-              transition={{ delay: 0.7, duration: 1.8 }}
-              className="text-4xl sm:text-6xl md:text-7xl uppercase tracking-[10px]"
-            >
-              Intelligence Reimagined
-            </motion.h1>
-
-            {/* Expanded hero content */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ delay: 1.2, duration: 1.6 }}
-              className="mt-8 text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed"
-            >
-              Where imagination meets intelligence, and ideas are shaped into
-              powerful narratives. A space where thinkers challenge conventions,
-              perspectives collide, and conversations extend far beyond the
-              stage—igniting curiosity, reflection, and change.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
-              transition={{ delay: 1.8 }}
-              className="mt-12 flex flex-col items-center"
-            >
-              <span className="text-[10px] tracking-widest text-gray-400">
-                SCROLL TO EXPLORE
-              </span>
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="mt-2 w-[2px] h-12 bg-gradient-to-b from-red-600 to-transparent"
-              />
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
 
       {/* ================= SECTION 2 ================= */}
       <section className="relative w-full h-screen text-white overflow-hidden">
