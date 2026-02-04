@@ -281,6 +281,93 @@ export default function About() {
           </div>
         </div>
       </section>
+      {/* ================= SECTION 4 : OUR TEAM ================= */}
+<section className="relative w-full bg-black text-white py-20 overflow-hidden">
+  {/* Background accent */}
+  <div className="absolute inset-0">
+    <div className="absolute -top-28 left-1/3 w-[520px] h-[520px] bg-red-600/14 rounded-full blur-[220px]" />
+  </div>
+
+  <div className="relative z-10 max-w-7xl mx-auto px-6">
+    {/* Title */}
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false }}
+      transition={{ duration: 0.8 }}
+      className="text-center mb-12"
+    >
+      <span className="text-xs tracking-[0.35em] text-red-500">
+        OUR TEAM
+      </span>
+
+      <h2 className="mt-3 text-4xl uppercase tracking-widest sm:text-5xl font-medium">
+        The People Behind <span className="text-red-600">TEDxSEC</span>
+      </h2>
+
+      <p className="mt-3 text-gray-300 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+        A committed team working together behind the scenes to shape ideas,
+        experiences, and conversations worth spreading.
+      </p>
+    </motion.div>
+
+    {/* Team Grid */}
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-3 gap-y-5">
+      {[
+        ["Sri Raman M", "Curator", "/sriraman.svg"],
+        ["Kanish R B", "Co Curator", "kanish.svg"],
+        ["Dheena Dhayalan R", "Designer", "dheena.svg"],
+        ["Karthik Vendhan", "Video Team", "karthik.svg"],
+        ["Pavithran M", "Video Team", "pavithran.svg"],
+        ["Abirami S", "Hospitality Team", "abirami.svg"],
+        ["Tamilvani A S", "Hospitality Team", "tamilvani.svg"],
+        ["Naveen M", "Hospitality Team", "naveen.svg"],
+        ["Gowtham P N", "Logistics Team", "gowtham.svg"],
+        ["Surya S", "Logistics Team", "surya.svg"],
+        ["Tharunkarthi G", "Production Team", "tharunkarthi.svg"],
+        ["Srikanth V T", "Production Team", "srikanth.svg"],
+        ["Anjali", "MC Team", "anjali.svg"],
+        ["Akshaya", "MC Team", "akshaya.svg"],
+        ["Madhumitha Dasarathy", "Creative Team", "madhumitha.svg"],
+        ["Tharushi S S", "Creative Team", "tharushi.svg"],
+        ["Madumitha I V", "Executive Team", "madumitha.svg"],
+        ["Ruthi Shankari S", "Executive Team", "ruthi.svg"],
+      ].map(([name, role, img], i) => (
+        <motion.div
+          key={name}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ delay: i * 0.025, duration: 0.6 }}
+          className="text-center"
+        >
+          <img
+            src={`/team-members/${img}`}
+            alt={name}
+            className="
+              w-40 h-40
+              mx-auto
+              rounded-xl
+              mb-1.5
+              object-contain
+              bg-white/10
+              p-2
+            "
+          />
+
+          <h4 className="text-xs font-medium leading-tight">
+            {name}
+          </h4>
+
+          <p className="text-[10px] text-red-500 mt-0.5">
+            {role}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 {/* ================= SECTION 4 : EVENT MILESTONES ================= */}
 <section className="relative w-full min-h-screen bg-black text-white overflow-hidden flex items-center">
   {/* Background glow */}
