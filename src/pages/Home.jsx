@@ -1,5 +1,12 @@
-import { motion, useAnimation, useInView, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  useInView,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useEffect, useRef } from "react";
+
 import AboutTed from "./AboutTed.jsx";
 import AboutTedSsec from "../components/AboutTedSsec.jsx";
 import AboutSairam from "../components/AboutSairam.jsx";
@@ -24,7 +31,6 @@ const kineticWords = [
 ];
 
 export default function Home() {
-
   /* ================= HERO CONTROLS ================= */
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { amount: 0.5 });
@@ -38,16 +44,11 @@ export default function Home() {
   const textControls = useAnimation();
 
   const { scrollY } = useScroll();
-  const yBG = useTransform(scrollY, [0, 1000], [0, 300]);
-  const yText = useTransform(scrollY, [0, 500], [0, 100]);
+  const yText = useTransform(scrollY, [0, 500], [0, 60]);
 
   /* HERO ANIMATION */
   useEffect(() => {
-    if (heroInView) {
-      heroControls.start("visible");
-    } else {
-      heroControls.start("hidden");
-    }
+    heroControls.start(heroInView ? "visible" : "hidden");
   }, [heroInView, heroControls]);
 
   /* STAGE ANIMATION */
@@ -74,14 +75,23 @@ export default function Home() {
         {/* Background strips */}
         <div className="absolute inset-0 grid grid-cols-5">
           {images.map((img, i) => {
-            const yParallax = useTransform(scrollY, [0, 1000], [0, (i % 2 === 0 ? 150 : -150)]);
+            const yParallax = useTransform(
+              scrollY,
+              [0, 1000],
+              [0, i % 2 === 0 ? 100 : -100]
+            );
+
             return (
               <motion.div
                 key={i}
                 initial={{ y: "100vh" }}
                 animate={{ y: 0 }}
+                transition={{
+                  delay: i * 0.08,      // ⬅ faster stagger
+                  duration: 0.55,       // ⬅ faster entry
+                  ease: "easeOut",
+                }}
                 style={{ backgroundImage: `url(${img})`, y: yParallax }}
-                transition={{ delay: i * 0.15, duration: 1 }}
                 className="bg-cover bg-center scale-[1.08] grayscale contrast-110 brightness-90"
               />
             );
@@ -96,11 +106,11 @@ export default function Home() {
         {/* content */}
         <motion.div
           variants={{
-            hidden: { opacity: 0, x: -80 },
+            hidden: { opacity: 0, x: -60 },
             visible: {
               opacity: 1,
               x: 0,
-              transition: { duration: 0.9 },
+              transition: { duration: 0.5, ease: "easeOut" }, // ⬅ faster
             },
           }}
           initial="hidden"
@@ -144,14 +154,14 @@ export default function Home() {
           variants={{
             hidden: {
               opacity: 0,
-              scale: 1.25,
-              filter: "brightness(0.25)",
+              scale: 1.18,
+              filter: "brightness(0.35)",
             },
             visible: {
               opacity: 1,
               scale: 1.05,
               filter: "brightness(1)",
-              transition: { duration: 2 },
+              transition: { duration: 1.0, ease: "easeOut" }, // ⬅ faster
             },
           }}
           initial="hidden"
@@ -165,7 +175,7 @@ export default function Home() {
           variants={{ hidden: { opacity: 1 }, visible: { opacity: 0 } }}
           initial="hidden"
           animate={bgControls}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 0.8 }} // ⬅ faster
           className="absolute inset-0 bg-black"
         />
 
@@ -173,7 +183,7 @@ export default function Home() {
           variants={{ hidden: { opacity: 0 }, visible: { opacity: 0.55 } }}
           initial="hidden"
           animate={bgControls}
-          transition={{ delay: 1.1, duration: 1 }}
+          transition={{ delay: 0.5, duration: 0.45 }} // ⬅ faster
           className="absolute inset-0 bg-black"
         />
 
@@ -181,32 +191,32 @@ export default function Home() {
           variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
           initial="hidden"
           animate={bgControls}
-          transition={{ delay: 1.2, duration: 1 }}
+          transition={{ delay: 0.6, duration: 0.45 }} // ⬅ faster
           className="absolute inset-0 bg-gradient-to-b from-red-600/30 via-transparent to-black/80"
         />
 
         {/* TEXT */}
         <div className="relative z-10 h-full flex flex-col justify-center items-center gap-2 text-center px-6">
-          {kineticWords.map((item, i) => (
-            <motion.h2
-              key={item.text}
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  opacity: 0,
-                  x: i % 2 === 0 ? -100 : 100, // Reduced from 220 for mobile safety, assuming md: variant if needed, but keeping it simple for now to avoid overflow
-                },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  transition: {
-                    delay: i * 0.22,
-                    duration: 0.85,
-                  },
-                },
-              }}
-              initial="hidden"
-              animate={textControls}
+ {kineticWords.map((item, i) => (
+  <motion.h2
+    key={item.text}
+    variants={{
+      hidden: {
+        opacity: 0,
+        x: i % 2 === 0 ? -45 : 45, // less travel = snappier
+      },
+      visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+          delay: i * 0.07,  // much faster stagger
+          duration: 0.32,   // faster snap
+          ease: "easeOut",
+        },
+      },
+    }}
+    initial="hidden"
+    animate={textControls}
               className={`
                 text-[clamp(1.6rem,4.5vw,3.1rem)]
                 font-black
@@ -214,10 +224,11 @@ export default function Home() {
                 tracking-wide
                 ${item.color}
               `}
-            >
-              {item.text}
-            </motion.h2>
-          ))}
+  >
+    {item.text}
+  </motion.h2>
+))}
+
 
           <motion.div
             initial={{ scaleX: 0 }}
@@ -225,7 +236,7 @@ export default function Home() {
             variants={{
               visible: {
                 scaleX: 1,
-                transition: { delay: 1.6, duration: 0.8 },
+                transition: { delay: 0.85, duration: 0.4 }, // ⬅ faster
               },
             }}
             className="mt-6 h-[3px] w-44 bg-red-600 origin-left rounded-full"
@@ -238,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* ======================================================
-          ABOUT TEDx SECTION
+          REMAINING SECTIONS
       ======================================================= */}
       <AboutTed />
       <AboutTedSsec />
