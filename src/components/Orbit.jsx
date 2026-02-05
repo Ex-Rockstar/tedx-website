@@ -141,6 +141,49 @@ const SPEAKERS = [
       { title: "PERSPECTIVE", value: "Lived Experience" },
     ],
   },
+  {
+  id: "07",
+  name: "Ms. Kharesma Ravichandran",
+  role: "Playback Singer",
+  bio: "A powerful voice shaped by classical discipline and contemporary expression.",
+  image: "/speaker7.svg",
+  link: "https://www.instagram.com/kharesma_?igsh=MWw0MnhyMjM4NjF5dg==",
+  elements: [
+    { title: "VOICE", value: "Playback Singing" },
+    { title: "CRAFT", value: "Classical • Contemporary" },
+    { title: "IMPACT", value: "Emotive Performance" },
+    { title: "STYLE", value: "Expressive • Powerful" },
+  ],
+},
+{
+  id: "08",
+  name: "Mr. Ashwin",
+  role: "Founder & CEO, Ashtag | Digital Creator",
+  bio: "Building creator-first ecosystems at the intersection of learning and digital culture.",
+  image: "/speaker8.svg",
+  link: "https://www.instagram.com/ashtaglearns?igsh=MXc0Zmp1MnhyNmR4Mw==",
+  elements: [
+    { title: "ENTREPRENEURSHIP", value: "EdTech • Creator Economy" },
+    { title: "CRAFT", value: "Content Strategy" },
+    { title: "IMPACT", value: "Digital Learning" },
+    { title: "PERSPECTIVE", value: "Growth • Branding" },
+  ],
+},
+{
+  id: "09",
+  name: "Mr. Sreekanth K G",
+  role: "Accent & Pronunciation Expert",
+  bio: "Helping voices find clarity, confidence, and credibility across global contexts.",
+  image: "/speaker9.svg",
+  link: "https://www.instagram.com/voice_of_sreek?igsh=MXAzcWZwZ3Rkc2xpaA==",
+  elements: [
+    { title: "EXPERTISE", value: "Accent Training" },
+    { title: "FOCUS", value: "Pronunciation • Speech" },
+    { title: "IMPACT", value: "Confidence Building" },
+    { title: "PERSPECTIVE", value: "Communication Psychology" },
+  ],
+},
+
 ];
 
 /* --------------------------------------------------
