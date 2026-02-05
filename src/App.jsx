@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Speakers from "./pages/Speakers";
 import Sponsors from "./pages/Sponsors";
+import Contact from "./pages/Contact";
 import Attend from "./pages/Attend";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/speakers" element={<Speakers />} />
         <Route path="/sponsors" element={<Sponsors />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/attend" element={<Attend />} />
       </Routes>
 
