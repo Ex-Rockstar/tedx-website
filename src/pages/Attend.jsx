@@ -225,6 +225,33 @@ export default function Attend() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* ================= NOTE CARD ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="
+          relative z-10
+          mt-16
+          w-full max-w-lg
+          border border-red-600/40
+          bg-red-600/10
+          backdrop-blur-sm
+          rounded-2xl
+          p-6
+        "
+      >
+        <h3 className="text-lg font-semibold mb-3 text-red-500">
+          Important Note
+        </h3>
+        <ul className="text-sm text-white/80 space-y-2 list-disc list-inside">
+          <li>Buses are available on the day of the event.</li>
+          <li>The last day for registration is <strong>13th Feb</strong>.</li>
+          <li>Other college members are not allowed.</li>
+        </ul>
+      </motion.div>
     </div>
   );
 }

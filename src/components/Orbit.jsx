@@ -60,10 +60,10 @@ const SPEAKERS = [
   {
     id: "01",
     name: "Ms. Mercy John",
-    role: "Podcaster & Managing Director,St.John's Matriculation School",
+    role: "Podcaster & Managing Director, St. John's Matriculation School",
     bio: "Audio storytelling, live conversations, and culture-forward narratives.",
     image: "/speaker1.svg",
-    link: "https://www.instagram.com/rjmercyjohn?igsh=MmN0c2d6MWIzc3Jz",
+    link: "https://www.instagram.com/rjmercyjohn",
     elements: [
       { title: "VOICE", value: "Podcasting • Radio" },
       { title: "CRAFT", value: "Storytelling • Interviews" },
@@ -77,7 +77,7 @@ const SPEAKERS = [
     role: "Photographer & Digital Creator",
     bio: "Frames that sell ideas: light, composition, and creator economics.",
     image: "/speaker2.svg",
-    link: "https://www.instagram.com/rprasanavenkatesh?igsh=MXNuZHpnM3hhcDQyZw==",
+    link: "https://www.instagram.com/rprasanavenkatesh",
     elements: [
       { title: "VISION", value: "Photography • Visual Design" },
       { title: "CRAFT", value: "Lighting • Composition" },
@@ -133,7 +133,7 @@ const SPEAKERS = [
     role: "Mental Health Storyteller — Chennai Sixty Eight",
     bio: "Stories that normalize difficult conversations and build empathy.",
     image: "/speaker6.svg",
-    link: "https://www.instagram.com/chennaisixtyeight?igsh=MXNnNm04dmdhcms0MA==",
+    link: "https://www.instagram.com/chennaisixtyeight",
     elements: [
       { title: "VOICE", value: "Mental Health Advocacy" },
       { title: "CRAFT", value: "Storytelling • Theatre" },
@@ -142,48 +142,47 @@ const SPEAKERS = [
     ],
   },
   {
-  id: "07",
-  name: "Ms. Kharesma Ravichandran",
-  role: "Playback Singer",
-  bio: "A powerful voice shaped by classical discipline and contemporary expression.",
-  image: "/speaker7.svg",
-  link: "https://www.instagram.com/kharesma_?igsh=MWw0MnhyMjM4NjF5dg==",
-  elements: [
-    { title: "VOICE", value: "Playback Singing" },
-    { title: "CRAFT", value: "Classical • Contemporary" },
-    { title: "IMPACT", value: "Emotive Performance" },
-    { title: "STYLE", value: "Expressive • Powerful" },
-  ],
-},
-{
-  id: "08",
-  name: "Mr. Ashwin",
-  role: "Founder & CEO, Ashtag | Digital Creator",
-  bio: "Building creator-first ecosystems at the intersection of learning and digital culture.",
-  image: "/speaker8.svg",
-  link: "https://www.instagram.com/ashtaglearns?igsh=MXc0Zmp1MnhyNmR4Mw==",
-  elements: [
-    { title: "ENTREPRENEURSHIP", value: "EdTech • Creator Economy" },
-    { title: "CRAFT", value: "Content Strategy" },
-    { title: "IMPACT", value: "Digital Learning" },
-    { title: "PERSPECTIVE", value: "Growth • Branding" },
-  ],
-},
-{
-  id: "09",
-  name: "Mr. Sreekanth K G",
-  role: "Accent & Pronunciation Expert",
-  bio: "Helping voices find clarity, confidence, and credibility across global contexts.",
-  image: "/speaker9.svg",
-  link: "https://www.instagram.com/voice_of_sreek?igsh=MXAzcWZwZ3Rkc2xpaA==",
-  elements: [
-    { title: "EXPERTISE", value: "Accent Training" },
-    { title: "FOCUS", value: "Pronunciation • Speech" },
-    { title: "IMPACT", value: "Confidence Building" },
-    { title: "PERSPECTIVE", value: "Communication Psychology" },
-  ],
-},
-
+    id: "07",
+    name: "Ms. Kharesma Ravichandran",
+    role: "Playback Singer",
+    bio: "A powerful voice shaped by classical discipline and contemporary expression.",
+    image: "/speaker7.svg",
+    link: "https://www.instagram.com/kharesma_",
+    elements: [
+      { title: "VOICE", value: "Playback Singing" },
+      { title: "CRAFT", value: "Classical • Contemporary" },
+      { title: "IMPACT", value: "Emotive Performance" },
+      { title: "STYLE", value: "Expressive • Powerful" },
+    ],
+  },
+  {
+    id: "08",
+    name: "Mr. Ashwin",
+    role: "Founder & CEO, Ashtag | Digital Creator",
+    bio: "Building creator-first ecosystems at the intersection of learning and digital culture.",
+    image: "/speaker8.svg",
+    link: "https://www.instagram.com/ashtaglearns",
+    elements: [
+      { title: "ENTREPRENEURSHIP", value: "EdTech • Creator Economy" },
+      { title: "CRAFT", value: "Content Strategy" },
+      { title: "IMPACT", value: "Digital Learning" },
+      { title: "PERSPECTIVE", value: "Growth • Branding" },
+    ],
+  },
+  {
+    id: "09",
+    name: "Mr. Sreekanth K G",
+    role: "Accent & Pronunciation Expert",
+    bio: "Helping voices find clarity, confidence, and credibility across global contexts.",
+    image: "/speaker9.svg",
+    link: "https://www.instagram.com/voice_of_sreek",
+    elements: [
+      { title: "EXPERTISE", value: "Accent Training" },
+      { title: "FOCUS", value: "Pronunciation • Speech" },
+      { title: "IMPACT", value: "Confidence Building" },
+      { title: "PERSPECTIVE", value: "Communication Psychology" },
+    ],
+  },
 ];
 
 /* --------------------------------------------------
@@ -226,11 +225,9 @@ export default function Orbit() {
               <span className="text-red-500 mr-1">●</span>
               TEDx Sairam · Speakers
             </p>
-
             <h1 className="mt-3 text-4xl sm:text-5xl font-semibold">
               Voices <span className="text-red-500">That Matter</span>
             </h1>
-
             <p className="mt-4 text-white/65 max-w-[70ch]">
               Introducing the speakers who bring stories, science, creativity,
               and courage to the TEDxSairam stage.
@@ -256,7 +253,8 @@ export default function Orbit() {
         {/* CONTENT */}
         <div className="mt-14 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-6">
 
-          {/* GRID */}
+ 
+          {/* GRID — FULL BLEED LIKE FIRST CARD */}
           <motion.div
             variants={container}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4"
@@ -272,14 +270,19 @@ export default function Orbit() {
                     : "rounded-3xl border border-white/10 hover:border-red-500/60 overflow-hidden text-left"
                 }
               >
-                <div className="relative h-[160px] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={s.image}
                     alt={s.name}
-                    className="h-full w-full object-cover"
+                    className="
+                      h-full w-full
+                      object-cover
+                      object-center
+                    "
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
                 </div>
+
                 <div className="p-4">
                   <p className="font-semibold">{s.name}</p>
                   <p className="text-sm text-white/60">{s.role}</p>
@@ -298,7 +301,7 @@ export default function Orbit() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="rounded-3xl border border-white/10 bg-black/45 backdrop-blur-xl p-7"
             >
-              <div className="relative h-[260px] rounded-3xl overflow-hidden border border-white/10">
+              <div className="relative w-full aspect-square rounded-3xl overflow-hidden border border-white/10">
                 <img
                   src={active.image}
                   alt={active.name}
@@ -309,11 +312,9 @@ export default function Orbit() {
               <h2 className="mt-5 text-3xl font-semibold">
                 {active.name}
               </h2>
-
               <p className="mt-1 text-red-500 font-medium">
                 {active.role}
               </p>
-
               <p className="mt-4 text-sm text-white/65">
                 {active.bio}
               </p>
