@@ -1,16 +1,16 @@
 // Footer.jsx
 import {
   FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-  FaXTwitter,
+  FaWhatsapp,
+  FaEnvelope,
 } from "react-icons/fa6";
 
 export default function Footer() {
   return (
     <footer className="relative bg-black text-white overflow-hidden">
       {/* subtle top glow line */}
-      <div className="absolute top-0 left-0 right-0 h-[1px]
+      <div
+        className="absolute top-0 left-0 right-0 h-[1px]
         bg-gradient-to-r from-transparent via-red-600/60 to-transparent"
       />
 
@@ -62,7 +62,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* copyright */}
           <p className="text-xs text-white/50 tracking-wide">
-            © {new Date().getFullYear()} TEDx Sairam.  
+            © {new Date().getFullYear()} TEDx Sairam.{" "}
             This independent TEDx event is operated under license from TED.
           </p>
 
@@ -72,18 +72,17 @@ export default function Footer() {
               {
                 icon: <FaInstagram />,
                 link: "https://instagram.com/tedxsairam",
+                label: "Instagram",
               },
               {
-                icon: <FaLinkedinIn />,
-                link: "https://linkedin.com/company/tedxsairam",
+                icon: <FaEnvelope />,
+                link: "mailto:tedxsairam@sairam.edu.in",
+                label: "Email",
               },
               {
-                icon: <FaYoutube />,
-                link: "https://youtube.com/@tedxsairam",
-              },
-              {
-                icon: <FaXTwitter />,
-                link: "https://twitter.com/tedxsairam",
+                icon: <FaWhatsapp />,
+                link: "https://wa.me/919342639631",
+                label: "WhatsApp",
               },
             ].map((s, i) => (
               <a
@@ -91,6 +90,7 @@ export default function Footer() {
                 href={s.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={s.label}
                 className="
                   h-9 w-9 rounded-full
                   border border-white/15
