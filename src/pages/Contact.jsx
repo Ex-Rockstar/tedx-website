@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import CallIcon from "@mui/icons-material/Call";
 
 export default function Contact() {
   return (
@@ -28,23 +29,19 @@ export default function Contact() {
         </motion.div>
 
         {/* Contact Cards */}
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-10 mb-24">
           {/* Email */}
           <motion.a
-            href="mailto:tedxsairam@sairam.edu.in" // 🔴 CHANGE IF NEEDED
+            href="mailto:tedxsairam@sairam.edu.in"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             whileHover={{ y: -6 }}
             className="
-              group
-              relative
-              rounded-2xl
+              group relative rounded-2xl
               border border-white/10
-              bg-white/5
-              backdrop-blur-xl
-              p-10
-              transition
+              bg-white/5 backdrop-blur-xl
+              p-10 transition
               hover:border-red-600/40
             "
           >
@@ -66,7 +63,7 @@ export default function Contact() {
 
           {/* Instagram */}
           <motion.a
-            href="https://instagram.com/tedxsairam" // 🔴 CHANGE IF NEEDED
+            href="https://instagram.com/tedxsairam"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 40 }}
@@ -74,14 +71,10 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2 }}
             whileHover={{ y: -6 }}
             className="
-              group
-              relative
-              rounded-2xl
+              group relative rounded-2xl
               border border-white/10
-              bg-white/5
-              backdrop-blur-xl
-              p-10
-              transition
+              bg-white/5 backdrop-blur-xl
+              p-10 transition
               hover:border-red-600/40
             "
           >
@@ -98,6 +91,64 @@ export default function Contact() {
             <p className="mt-6 text-sm tracking-wider text-red-500">
               @tedxsairam
             </p>
+          </motion.a>
+        </div>
+
+        {/* ================= CONTACT PERSONS ================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <p className="text-xs tracking-[0.4em] text-white/50 mb-4">
+            DIRECT CONTACT
+          </p>
+          <h2 className="text-3xl font-semibold">
+            Contact <span className="text-red-600">Persons</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 gap-8">
+          {/* Person 1 */}
+          <motion.a
+            href="tel:9940527926"
+            whileHover={{ y: -4 }}
+            className="
+              flex items-center gap-5
+              rounded-2xl
+              border border-white/10
+              bg-white/5 backdrop-blur-xl
+              p-6 transition
+              hover:border-red-600/40
+            "
+          >
+            <CallIcon className="text-red-600" />
+            <div>
+              <p className="font-medium">Sriraman M</p>
+              <p className="text-sm text-white/60">+91 99405 27926</p>
+            </div>
+          </motion.a>
+
+          {/* Person 2 */}
+          <motion.a
+            href="tel:9342639631"
+            whileHover={{ y: -4 }}
+            className="
+              flex items-center gap-5
+              rounded-2xl
+              border border-white/10
+              bg-white/5 backdrop-blur-xl
+              p-6 transition
+              hover:border-red-600/40
+            "
+          >
+            <CallIcon className="text-red-600" />
+            <div>
+              <p className="font-medium">Kanish R B</p>
+              <p className="text-sm text-white/60">+91 93426 39631</p>
+            </div>
           </motion.a>
         </div>
       </div>
