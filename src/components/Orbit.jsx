@@ -62,7 +62,7 @@ const SPEAKERS = [
     name: "Ms. Mercy John",
     role: "Podcaster & Managing Director,St.John's Matriculation School",
     bio: "Audio storytelling, live conversations, and culture-forward narratives.",
-    image: "/mercy.png",
+    image: "/speaker1.svg",
     link: "https://www.instagram.com/rjmercyjohn?igsh=MmN0c2d6MWIzc3Jz",
     elements: [
       { title: "VOICE", value: "Podcasting • Radio" },
