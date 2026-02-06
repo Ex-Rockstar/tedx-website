@@ -334,10 +334,10 @@ export default function About() {
         CHIEF PATRON
       </p>
       <h3 className="text-xl font-medium mb-1">
-        Mr. Sai Prakash Leo Muthu
+        Dr. Sai Prakash Leo Muthu
       </h3>
       <p className="text-white/60 text-sm">
-        CEO, Sairam Institutions
+        Chairman and CEO, Sairam Institutions
       </p>
     </motion.div>
 
