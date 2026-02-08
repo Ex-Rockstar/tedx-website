@@ -11,7 +11,7 @@ export default function Pricing({ onSelect }) {
         "Event Access",
         "Balcony Seating",
         "Refreshments",
-        "Event Kit"
+        "Event Kit",
       ],
     },
     {
@@ -29,11 +29,9 @@ export default function Pricing({ onSelect }) {
     {
       id: "A",
       title: "DIAMOND",
-      originalPrice: "₹600",
-      price: "₹500",
+      price: "₹600",
       popular: true,
       note: "Premium Experience",
-      offer: "Early Bird Offer",
       features: [
         "Front Row Seating",
         "Exclusive Guest Interaction",
@@ -87,23 +85,9 @@ export default function Pricing({ onSelect }) {
             </h3>
 
             {/* PRICE */}
-            {plan.originalPrice ? (
-              <div className="mb-2">
-                <div className="text-sm text-white/50 line-through">
-                  {plan.originalPrice}
-                </div>
-                <div className="text-4xl font-extrabold text-red-500">
-                  {plan.price}
-                </div>
-                <div className="text-xs text-red-400 tracking-widest mt-1">
-                  {plan.offer}
-                </div>
-              </div>
-            ) : (
-              <div className="text-4xl font-extrabold mb-1">
-                {plan.price}
-              </div>
-            )}
+            <div className="text-4xl font-extrabold mb-1 text-red-500">
+              {plan.price}
+            </div>
 
             <p className="text-white/60 text-sm mb-6">
               {plan.note}
