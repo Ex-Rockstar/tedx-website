@@ -7,6 +7,7 @@ export default function Pricing({ onSelect }) {
       title: "SILVER",
       price: "₹300",
       note: "Balcony Seating",
+      disabled: true, // 👈 Disabled plan
       features: [
         "Event Access",
         "Balcony Seating",
@@ -94,24 +95,32 @@ export default function Pricing({ onSelect }) {
             </p>
 
             <ul className="space-y-2 text-sm text-white/70 mb-8">
-              {plan.features.map((f) => (
-                <li key={f}>✓ {f}</li>
+              {plan.features.map((feature) => (
+                <li key={feature}>✓ {feature}</li>
               ))}
             </ul>
 
             <button
-              onClick={() => onSelect(plan.id)}
+              disabled={plan.disabled}
+              onClick={() => !plan.disabled && onSelect(plan.id)}
               className={`
                 mt-auto
-                py-3 rounded-lg font-bold tracking-widest text-sm
+                py-3
+                rounded-lg
+                font-bold
+                tracking-widest
+                text-sm
+                transition
                 ${
-                  plan.popular
+                  plan.disabled
+                    ? "bg-neutral-700 cursor-not-allowed opacity-50"
+                    : plan.popular
                     ? "bg-red-600 hover:bg-red-700"
                     : "border border-white/30 hover:bg-white/10"
                 }
               `}
             >
-              SELECT PLAN
+              {plan.disabled ? "SOLD OUT" : "SELECT PLAN"}
             </button>
           </motion.div>
         ))}
